@@ -1,24 +1,32 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from '../store/store';
-
-// import { useSelector, useDispatch } from 'react-redux';
-// import { RootState } from '../modules';
-// import { increase, decrease, increaseBy } from '../modules/counter'
-
+import { RootState } from '../reducers/index';
+import {LoginHandler, LogoutHandler} from '../actions/actions';
 
 const LoginSection: React.FC = () => {
   //로그인 하지 않았을때는 로그인 버튼
   //로그인 했을 때는 마이페이지 버튼
-  const isLogin = useSelector((state: RootState) => state.LoginReducer)
-  const {login} = isLogin
+  const loginState = useSelector((state: RootState) => state.LoginReducer)
+  const {isLogin} = loginState
   const dispatch = useDispatch();
   
+  const clickLogin = (e: React.MouseEvent<HTMLButtonElement>) => {
+    if(isLogin) {
+      dispatch(LogoutHandler(false));
+    } else {
+      dispatch(LoginHandler(true));
+    }
+  }
+
   return (
     <div className='loginsection'>
-      
-        <button>로그인</button>
-      
+      <button onClick={clickLogin}>
+        {
+          isLogin?
+            '마이페이지':
+            '로그인'
+        }
+      </button>
     </div>
   )
 }

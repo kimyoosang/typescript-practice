@@ -1,8 +1,8 @@
 
 export type loginState = {
-  login: boolean;
+  isLogin: boolean;
 };
 
 export const initialState: loginState = {
-  login: true
+  isLogin: false
 };

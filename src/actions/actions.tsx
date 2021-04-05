@@ -1,20 +1,11 @@
-export const LOGIN = 'LOGIN' as const; //1. 액션타입 정의
-export const LOGOUT = 'LOGOUT' as const
+import { createAction, ActionType  } from 'typesafe-actions';
 
-export const LoginHandler = () => {
-  return {
-    type: LOGIN,
-    payload: true
-  }
-}
+export const LOGIN = 'LOGIN';
+export const LOGOUT = 'LOGOUT';
 
-export const LogoutHandler = () => {
-  return {
-    type: LOGOUT,
-    payload: false
-  }
-}
+export const LoginHandler = createAction(LOGIN)<boolean>();
+export const LogoutHandler = createAction(LOGOUT)<boolean>();
 
-export type Loginchange = 
-    | ReturnType<typeof LoginHandler>
-    | ReturnType<typeof LogoutHandler>
+const actions = {LoginHandler, LogoutHandler};
+
+export type LoginAction = ActionType<typeof actions>

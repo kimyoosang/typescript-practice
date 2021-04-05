@@ -1,14 +1,9 @@
 
-import {createStore, combineReducers } from "redux";
-import LoginReducer from '../reducers/reducer';
+import {createStore } from "redux";
+import rootReducer  from '../reducers/index';
 
-const rootReducer = combineReducers({
-  LoginReducer
-})
 
 const store = createStore(rootReducer);
-
-export type RootState = ReturnType<typeof rootReducer>;
 
 export default store;
 
