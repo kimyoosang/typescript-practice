@@ -10,9 +10,6 @@ import './Header.css'
 const Header: React.FC = () => {
 
   const [NowPage, setNowPage] = useState<boolean>(true); //true면 defalultgroup, false면 myoptiongroup
-  const togglePage = (props:boolean) : void => {
-    setNowPage(props)
-  }
 
   return (
     //로고
@@ -20,7 +17,7 @@ const Header: React.FC = () => {
     // <LoginSection> => 로그인 상태에 따라서 <LoginBtn> : <MypageBtn>
     <div className="header-container">
       <div className="logo">
-        <Link to="landing" onClick={()=> setNowPage(true)}>
+        <Link to="/" onClick={()=> setNowPage(true)}>
         <div className='header-logo-wrapper'>
           <img className='header-logo' alt="Logo" src={logo} />
         </div>

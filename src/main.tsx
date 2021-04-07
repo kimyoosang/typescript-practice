@@ -1,20 +1,30 @@
 import * as React from 'react';
-import { Route, BrowserRouter, Switch } from 'react-router-dom';
+import { Route, Switch, Router } from 'react-router-dom';
 import SearchPage from './Pages/SearchPage'
+import RegisterPage from './Pages/RegisterPage';
+import Mypage from './Pages/Mypage';
 import Header from './components/Header';
+import { RouterProps, withRouter } from 'react-router';
 
-const Main:React.FC = () => {
+
+const Main:React.FC<RouterProps> = ({ history }) => {
 
   return (
-    <BrowserRouter>
+    <Router history={history}>
       <Header/>
       <Switch>
-        <Route path='/search'>
+        <Route path='/main/register'>
+          <RegisterPage/>
+        </Route>
+        <Route path='/mypage'>
+          <Mypage/>
+        </Route>
+        <Route path='/main/search'>
         <SearchPage/>
         </Route>
         </Switch>
-    </BrowserRouter>
+    </Router>
   );
 }
 
-export default Main;
+export default withRouter(Main);
